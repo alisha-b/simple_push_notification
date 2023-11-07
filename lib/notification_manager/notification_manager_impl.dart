@@ -1,11 +1,11 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:simple_push_notification/others/notification_config.dart';
 import 'package:simple_push_notification/others/notification_navigation.dart';
 import 'package:simple_push_notification/others/notification_payload.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import 'notification_manager.dart';
 
@@ -45,7 +45,7 @@ class NotificationManagerImpl implements NotificationManager {
   }
 
   Future<void> _init() async {
-    if (Platform.isIOS) {
+    if (!kIsWeb && Platform.isIOS) {
       _requestIosPermission();
     }
 
